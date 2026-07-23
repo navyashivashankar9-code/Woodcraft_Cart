@@ -46,15 +46,4 @@ This project includes:
 - The application uses client-side storage for cart persistence.
 - `connection.php` is included for database connectivity but the project does not include all server-side pages such as `signup.php` or `payment.html`.
 
-## GitHub Push
 
-To push this project to GitHub:
-
-```bash
-git init
-git add .
-git commit -m "Add e-commerce website files and README"
-git branch -M main
-git remote add origin <YOUR_GITHUB_REPO_URL>
-git push -u origin main
-```
