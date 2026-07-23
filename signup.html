@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup | stationary studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+            background-image: url("https://i.pinimg.com/736x/82/b4/87/82b48769ee49ba906c0871ea6eb19580.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .signup-box {
+            color: rgb(17, 16, 16);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .signup-box h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus {
+            border-color: #ad884f;
+            box-shadow: 0 0 8px rgba(216, 167, 94, 0.5);
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #9f7639;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        button:hover {
+            background: #5f5648;
+        }
+        
+        .login-link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        
+        .login-link a {
+            color: #0b0701;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-box">
+            <h2>Create an Account</h2>
+            <form action="signup.php" method="post">
+                <label for="tb1">Username:</label>
+                <input type="text" id="tb1" name="tb1" placeholder="Enter your Username" required>
+                
+                <label for="tb2">Full Name:</label>
+                <input type="text" id="tb2" name="tb2" placeholder="Enter your Fullname" required>
+                
+                <label for="tb3">Mobile Number:</label>
+                <input type="number" id="tb3" name="tb3" placeholder="Mobile number" required>
+                
+                <label for="tb4">Email:</label>
+                <input type="email" id="tb4" name="tb4" placeholder="Email" required>
+                
+                <label for="tb5">Password:</label>
+                <input type="password" id="tb5" name="tb5" placeholder="Enter your Password" required>
+                
+                <label for="tb6">Confirm Password:</label>
+                <input type="password" id="tb6" name="tb6" placeholder="Confirm Password" required>
+                
+                <button type="submit">Submit</button>
+            </form>
+            <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+</body>
+</html>

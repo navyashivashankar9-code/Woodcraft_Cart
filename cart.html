@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - wonder wood </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>wonder wood</h1>
+        <nav>
+            <ul style="font-size: 20px;">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">about</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="contact_us.html">Contact us</a></li>
+                <li><a href="cart.html" id="cart-icon">
+                    <img src="cart.png" alt="Cart" style="height: 30px; width: 30px;">
+                    <span id="cart-count">0</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart">
+            <h2>Your Cart</h2>
+            <div id="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+            <div id="cart-summary">
+                <p>Total: ₹<span id="total-price">0</span></p>
+                <button onclick="checkout()">Proceed to Checkout</button>
+            </div>
+        </section>
+    </main>
+
+    <footer style="text-align: center;">
+        <p>&copy; wonder wood</p>
+    </footer>
+
+    <script>
+        // Function to display the cart contents
+        function displayCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartItemsContainer = document.getElementById('cart-items');
+            let totalPrice = 0;
+
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                return;
+            }
+
+            cart.forEach(item => {
+                let itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+
+                itemDiv.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}" style="width: 100px; height: 100px;">
+                    <div>
+                        <h3>${item.name}</h3>
+                        <p>Price: ₹${item.price}</p>
+                    </div>
+                    <button onclick="removeFromCart('${item.name}')">Remove</button>
+                `;
+
+                cartItemsContainer.appendChild(itemDiv);
+                totalPrice += item.price;
+            });
+
+            document.getElementById('total-price').innerText = totalPrice;
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+
+        function removeFromCart(itemName) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.name !== itemName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        // Function to generate invoice and proceed to payment
+        function checkout() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+
+            let invoice = {
+                items: cart,
+                total: document.getElementById('total-price').innerText
+            };
+
+            localStorage.setItem('invoice', JSON.stringify(invoice)); // Save invoice data
+            window.location.href = "payment.html"; // Redirect to payment page
+        }
+
+        window.onload = function() {
+            displayCart();
+        };
+    </script>
+</body>
+</html>
